@@ -236,7 +236,7 @@ breedrainthresh<-0 # rain dependent breeder? 0 means no, otherwise enter rainfal
 # winter solstice (3), vernal equinox (4), specified daylength thresholds (5)
 photostart<- 5 # photoperiod initiating breeding, 4 means that vitellogenesis doesn't start until 22nd Sept, but happens quickly, and model assumes that dev can start once activity is possible so gestation is probably starting a little early 
 photofinish<- 1 # photoperiod terminating breeding
-daylengthstart<- 12.5 # threshold daylength for initiating breeding. Ocellatus ovulate in October - for calculator:http://www.timeanddate.com/sun/australia/hobart?month=10&year=2015
+daylengthstart<- 13 # threshold daylength for initiating breeding. Ocellatus ovulate in October - for calculator:http://www.timeanddate.com/sun/australia/hobart?month=10&year=2015
 daylengthfinish<- 12.5 # threshold daylength for terminating breeding, birth from Dec - Feb (perhaps change to 13?)
 photodirs <- 1 # is the start daylength trigger during a decrease (0) or increase (1) in day length?
 photodirf <- 0 # is the finish daylength trigger during a decrease (0) or increase (1) in day length?
@@ -397,7 +397,7 @@ points(debout$CUMREPRO/1000~debout$dates,type='l',col='red') # plot energy in th
 abline(v=year_vals$dates,col='grey',lty=2) # add lines to show beginning of each year
 plot(debout$V_baby~debout$dates,type='l', ylab='embryo structure (cm3)',xlab="date") # plot embryo development (volume of structure)
 abline(v=year_vals$dates,col='grey',lty=2) # add lines to show beginning of each year
-
+points(debout$Breeding/10~debout$dates,type='l',col='light blue',lty=1)
 # get birthdays
 V_baby2<-debout[1:(nrow(debout)-1),15]-debout[2:(nrow(debout)),15]
 V_baby2[V_baby2>0.1]<-1

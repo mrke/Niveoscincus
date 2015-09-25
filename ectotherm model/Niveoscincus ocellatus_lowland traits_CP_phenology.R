@@ -235,7 +235,7 @@ breedrainthresh<-0 # rain dependent breeder? 0 means no, otherwise enter rainfal
 # photoperiod response triggering ovulation, none (0), summer solstice (1), autumnal equinox (2),  
 # winter solstice (3), vernal equinox (4), specified daylength thresholds (5)
 photostart<- 5 # photoperiod initiating breeding, 4 means that vitellogenesis doesn't start until 22nd Sept, but happens quickly, and model assumes that dev can start once activity is possible so gestation is probably starting a little early 
-photofinish<-4 # photoperiod terminating breeding
+photofinish<-2 # photoperiod terminating breeding
 daylengthstart<- 14.5 # threshold daylength for initiating breeding. Ocellatus ovulate in October - for calculator:http://www.timeanddate.com/sun/australia/hobart?month=10&year=2015
 daylengthfinish<- 12 # threshold daylength for terminating breeding, birth from Dec - Feb (perhaps change to 13?)
 photodirs <- 0 # is the start daylength trigger during a decrease (0) or increase (1) in day length?
@@ -395,6 +395,7 @@ actstart<-subset(plotenviron,as.character(plotenviron$dates,format='%d/%m')=="15
 actstart<-subset(actstart,as.character(actstart$dates,format='%H')=="00") # get midnight
 actstart<-subset(actstart,JULDAY>0) # get rid of years after death
 abline(v=actstart$DAY,col='grey',lty=2) # plot 15th September and 15th April for reference
+points(debout$Breeding/10~debout$dates,type='l',col='light blue',lty=1)
 
 
 # plot mass and reproduction phenology
@@ -408,7 +409,7 @@ plot(debout$CUMBATCH/1000~debout$dates,type='l', ylab='total energy, kJ',xlab="d
 points(debout$CUMREPRO/1000~debout$dates,type='l',col='red') # plot energy in the reproduction buffer (captial for egg production, but not currently transformed to eggs)
 abline(v=year_vals$dates,col='grey',lty=2) # add lines to show beginning of each year
 plot(debout$V_baby~debout$dates,type='l', ylab='embryo structure (cm3)',xlab="date") # plot embryo development (volume of structure)
-abline(v=year_vals$dates,col='grey',lty=2) # add lines to show beginning of each year
+points(debout$Breeding/10~debout$dates,type='l',col='light blue',lty=1)
 
 # get birthdays
 V_baby2<-debout[1:(nrow(debout)-1),15]-debout[2:(nrow(debout)),15]
