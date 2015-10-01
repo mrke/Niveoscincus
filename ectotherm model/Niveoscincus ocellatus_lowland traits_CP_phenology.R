@@ -227,6 +227,7 @@ N_waste<-c(1,4/5,3/5,4/5) # chemical formula for nitrogenous waste product, CHON
 # breeding life history
 clutchsize<-5. # clutch size, if using regression below, make this the max clutch size
 clutch_ab<-c(2.5,12.5) # paramters for relationship between length and clutch size: clutch size = a*SVL-b, make zero if fixed clutch size
+minclutch<-0 # if this is zero, will delay reproduction until it reaches clutch size as specified above, othewise will have a clutch if it gets to this minimum value in a given repro season
 viviparous<-1 # 1=yes, 0=no
 batch<-1 # invoke Pequerie et al.'s batch laying model?
 
